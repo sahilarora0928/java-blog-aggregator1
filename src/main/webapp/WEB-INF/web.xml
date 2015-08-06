@@ -33,11 +33,43 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
-	<!-- IF U HAVE MORE FILTERS THEN THIS SHOULD FIRST BECAUSE IN THIS WEB.XML FILE THE FILTER MAPPING IS RELEVANT -->
+	<!-- IF U HAVE MORE FILTERS THEN THIS SHOULD FIRST BECAUSE IN THIS WEB.XML 
+		FILE THE FILTER MAPPING IS RELEVANT -->
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<context-param>
+		<param-name>defaultHtmlEscape</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+
+	<!-- this means that the production profile will be active, so that we dont have to change anything to heroku in order to get the application to work -->
+	<context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>prod</param-value>
+	</context-param>
+
 	<!-- <filter> <filter-name>oemInViewFilter</filter-name> <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class> 
 		<init-param> <param-name>entityManagerFactoryBeanName</param-name> <param-value>emf</param-value> 
 		</init-param> </filter> <filter-mapping> <filter-name>oemInViewFilter</filter-name> 

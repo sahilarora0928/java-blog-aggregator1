@@ -25,6 +25,7 @@
 
 <script src="C:/Users/sarora19/Downloads/jquery/bootstrap.min.js"></script>
 
+<script src="C:/Users/sarora19/Downloads/jquery/jquery.validate.min.js" ></script>
 
 
 
@@ -61,6 +62,8 @@
 							href="<spring:url value="/login.html" />">Login</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
+					<li class="${current == 'account' ? 'active' : ''}"><a
+						href="<spring:url value="/account.html" />">My Account</a></li>
 						<li><a href="<spring:url value="/logout" />">Logout</a></li>
 					</security:authorize>
 				</ul>
